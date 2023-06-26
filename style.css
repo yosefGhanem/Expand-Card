@@ -1,0 +1,77 @@
+/*imported from fonts.google.com*/
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+/*Apply to everything*/
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Muli',sans-serif;
+    /*center everything*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*100 vh(responsive) of the browser*/
+    height: 100vh;
+    overflow: hidden;
+    /*Get rid of margin*/
+    margin: 0;
+}
+
+/*.Container wrapped around all panels*/
+.container{
+    /*Now all divs are put horizontal into a row*/
+    display: flex;
+    width: 90vh;
+}
+
+.panel{
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    /*make it radius*/
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    flex: 0.5;
+    /*seperate cards a little bit*/
+    margin: 10px;
+    position: relative;
+    /*to have a transition*/
+    transition: flex 0.7s ease-in;
+}
+
+.panel h3{
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    /*make it invisible and show them when they are active*/
+    opacity: 0;
+}
+
+.panel.active {
+    flex: 5;
+}
+
+.panel.active h3{
+    opacity: 1;
+    /*This code to make h3 disappeared then appeared after 0.3s*/
+    transition: opacity 0.3s ease-in 0.4s;
+}
+/*If the screen is very small we 
+show 3 instead of 5 of these cards*/
+@media(max-width:480px){
+    .container {
+        width: 100vw;
+    }
+
+    /*remove last 2 panels (cards)*/
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5){
+        display: none;
+    }
+}
